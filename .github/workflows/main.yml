@@ -170,7 +170,7 @@ jobs:
           script: |
             mkdir -p /home/${{ secrets.USER }}/taski
             chmod 755 /home/${{ secrets.USER }}/taski
-            rm -f /home/${{ secrets.USER }}/taski/docker-compose.production.yml
+            sudo rm -f /home/${{ secrets.USER }}/taski/docker-compose.production.yml
 
       # Копируем docker-compose.production.yml на сервер (в уже подготовленную папку)
       - name: Copy docker-compose.production.yml via ssh
