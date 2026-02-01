@@ -168,8 +168,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
-            mkdir -p /home/${{ secrets.USER }}/taski
-            chmod 755 /home/${{ secrets.USER }}/taski
+            set -e
+            sudo mkdir -p /home/${{ secrets.USER }}/taski
+            sudo chown -R ${{ secrets.USER }}:${{ secrets.USER }} /home/${{ secrets.USER }}/taski
+            sudo chmod 755 /home/${{ secrets.USER }}/taski
             sudo rm -f /home/${{ secrets.USER }}/taski/docker-compose.production.yml
 
       # Копируем docker-compose.production.yml на сервер (в уже подготовленную папку)
